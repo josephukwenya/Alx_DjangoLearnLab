@@ -7,6 +7,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.contrib.auth import login
 
 # Create your views here.
 # Function based view
@@ -32,3 +33,7 @@ class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'relationship_app/register.html'
     success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
