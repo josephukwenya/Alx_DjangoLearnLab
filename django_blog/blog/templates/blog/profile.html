@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+  <h2>Your Profile</h2>
+
+  <form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+
+    <fieldset>
+      <legend>Account Details</legend>
+      {{ u_form.as_p }}
+    </fieldset>
+
+    <fieldset>
+      <legend>Profile</legend>
+      {% if request.user.profile.avatar %}
+        <p>Current avatar:</p>
+        <img src="{{ request.user.profile.avatar.url }}" alt="avatar" style="max-width:120px;height:auto;" />
+      {% endif %}
+      {{ p_form.as_p }}
+    </fieldset>
+
+    <button type="submit">Save changes</button>
+  </form>
+{% endblock %}
