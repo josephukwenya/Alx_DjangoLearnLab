@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth import get_user_model
-from .serializers import UserSerializer, RegisterSerializer, UpdateUserSerializer
+from .serializers import UserSerializer, RegisterSerializer
 
 # Create your views here.
 User = get_user_model()
